@@ -10,7 +10,7 @@ using System.IO;
 
 namespace DealAndTripServer.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/TripsApi")]
     [ApiController]
     public class DealAndTripController : ControllerBase
     {
@@ -21,5 +21,13 @@ namespace DealAndTripServer.Controllers
             this.context = context;
         }
         #endregion
+
+
+        [Route("Hello")]
+        [HttpGet]
+        public string HelloWorld()
+        {
+            return "hello cheni";
+        }
     }
 }
