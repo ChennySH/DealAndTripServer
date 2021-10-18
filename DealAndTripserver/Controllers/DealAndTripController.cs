@@ -29,5 +29,12 @@ namespace DealAndTripServer.Controllers
         {
             return "hello cheni";
         }
+        [Route("Hello_user")]
+        [HttpGet]
+        public string GetUser()
+        {
+            return  context.GetUserLastName();
+            
+        }
     }
 }
