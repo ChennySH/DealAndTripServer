@@ -16,7 +16,7 @@ namespace DealAndTripServerBL.Models
         }
         public User GetUser(string userName)
         {
-            return this.Users.Include(uc=>uc.).Where(uc => uc.UserName == userName)
+            
         }
     }
 }
