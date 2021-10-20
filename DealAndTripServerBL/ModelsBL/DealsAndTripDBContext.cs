@@ -13,6 +13,7 @@ namespace DealAndTripServerBL.Models
         public string GetUserLastName()
         {
             return this.Users.Where(uc => uc.Email == "kuku@kuku.com").FirstOrDefault().LastName;
+
         }
         public User GetUser(string userName, string password)
         {
