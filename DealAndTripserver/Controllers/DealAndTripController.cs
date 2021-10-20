@@ -14,13 +14,13 @@ namespace DealAndTripServer.Controllers
     [ApiController]
     public class DealAndTripController : ControllerBase
     {
-        #region Add connection to the db context using dependency injection
-        DealAndTripDBContext context;
-        public DealAndTripController(DealAndTripDBContext context)
-        {
-            this.context = context;
-        }
-        #endregion
+        //#region Add connection to the db context using dependency injection
+        //DealAndTripDBContext context;
+        //public DealAndTripController(DealAndTripDBContext context)
+        //{
+        //    this.context = context;
+        //}
+        //#endregion
 
 
         [Route("Hello")]
@@ -29,12 +29,12 @@ namespace DealAndTripServer.Controllers
         {
             return "hello cheni";
         }
-        [Route("Hello_user")]
-        [HttpGet]
-        public string GetUser()
-        {
-            return  context.GetUserLastName();
+        //[Route("Hello_user")]
+        //[HttpGet]
+        //public string GetUser()
+        //{
+        //    return  context.GetUserLastName();
             
-        }
+        //}
     }
 }
