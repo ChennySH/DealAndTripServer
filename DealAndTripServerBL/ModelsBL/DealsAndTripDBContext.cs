@@ -8,15 +8,19 @@ using Microsoft.EntityFrameworkCore.Metadata;
 
 namespace DealAndTripServerBL.Models
 {
-    //public partial class DealAndTripDBContext : DbContext
-    //{
-    //    public string GetUserLastName()
-    //    {
-    //        return this.Users.Where(uc => uc.Email == "kuku@kuku.com").FirstOrDefault().LastName;
-    //    }
-    //    public User GetUser(string userName)
-    //    {
-            
-    //    }
-    //}
+    public partial class DealAndTripDBContext : DbContext
+    {
+        public string GetUserLastName()
+        {
+            return this.Users.Where(uc => uc.Email == "kuku@kuku.com").FirstOrDefault().LastName;
+        }
+        public User GetUser(string userName, string password)
+        {
+            User u = this.Users.Include(uc => uc.TravelAgent).Where(uc => uc.UserName == userName && uc.Password == password).FirstOrDefault();
+            if (u != null)
+                return u;
+            else
+                return this.Users.Include(uc => uc.TravelAgent).Where(uc => uc.Email == userName && uc.Password == password).FirstOrDefault();
+        }
+    }
 }

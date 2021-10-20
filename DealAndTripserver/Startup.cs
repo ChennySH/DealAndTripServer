@@ -47,13 +47,13 @@ namespace DealAndTripServer
             });
 
             ////The following set the connection string to the DB and DB context!
-            //#region Add DB Context Support
-            //string connectionString = this.Configuration.GetConnectionString("DealAndTripDB");
+            #region Add DB Context Support
+            string connectionString = this.Configuration.GetConnectionString("DealAndTripDB");
 
-            //services.AddDbContext<DealAndTripDBContext>(options => options
-            //                                                    .UseSqlServer(connectionString));
-            ////.UseLazyLoadingProxies());
-            //#endregion
+            services.AddDbContext<DealAndTripDBContext>(options => options
+                                                                .UseSqlServer(connectionString));
+            //.UseLazyLoadingProxies());
+            #endregion
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
