@@ -1,14 +1,11 @@
-Create database DealAndTripDB
-Use DealAndTripDB
-go
 CREATE TABLE "Users"(
     "UserName" NVARCHAR(255) NOT NULL,
     "FirstName" NVARCHAR(255) NOT NULL,
     "LastName" NVARCHAR(255) NOT NULL,
     "Email" NVARCHAR(255) NOT NULL,
-    "Password" INT NOT NULL,
+    "Password" NVARCHAR(255) NOT NULL,
     "PhoneNumber" INT NOT NULL,
-    "Price" INT NOT NULL
+    "TravelAgentID" INT NULL
 );
 ALTER TABLE
     "Users" ADD CONSTRAINT "users_username_primary" PRIMARY KEY("UserName");
@@ -22,9 +19,12 @@ CREATE TABLE "VacationsResturant"(
 ALTER TABLE
     "VacationsResturant" ADD CONSTRAINT "vacationsresturant_id_primary" PRIMARY KEY("id");
 CREATE TABLE "TravelAgents"(
+    "id" INT NOT NULL,
     "Rank" INT NOT NULL,
     "UserName" NVARCHAR(255) NOT NULL
 );
+ALTER TABLE
+    "TravelAgents" ADD CONSTRAINT "travelagents_id_primary" PRIMARY KEY("id");
 CREATE UNIQUE INDEX "travelagents_username_unique" ON
     "TravelAgents"("UserName");
 CREATE TABLE "Vacations"(
@@ -37,7 +37,8 @@ CREATE TABLE "Vacations"(
     "Rank" INT NOT NULL,
     "EnterFlightID" INT NOT NULL,
     "ExitFlightID" INT NOT NULL,
-    "NightsNumber" INT NOT NULL
+    "NightsNumber" INT NOT NULL,
+    "Price" INT NOT NULL
 );
 ALTER TABLE
     "Vacations" ADD CONSTRAINT "vacations_id_primary" PRIMARY KEY("id");
@@ -122,6 +123,8 @@ ALTER TABLE
     "VacationsCities" ADD CONSTRAINT "vacationscities_id_primary" PRIMARY KEY("id");
 ALTER TABLE
     "TravelAgents" ADD CONSTRAINT "travelagents_username_foreign" FOREIGN KEY("UserName") REFERENCES "Users"("UserName");
+ALTER TABLE
+    "Users" ADD CONSTRAINT "users_travelagentid_foreign" FOREIGN KEY("TravelAgentID") REFERENCES "TravelAgents"("id");
 ALTER TABLE
     "VacationsResturant" ADD CONSTRAINT "vacationsresturant_vacationid_foreign" FOREIGN KEY("VacationID") REFERENCES "Vacations"("id");
 ALTER TABLE
