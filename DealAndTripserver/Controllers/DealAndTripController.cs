@@ -10,7 +10,7 @@ using System.IO;
 
 namespace DealAndTripServer.Controllers
 {
-    [Route("api/TripsApi")]
+    [Route("DealAndTripAPI")]
     [ApiController]
     public class DealAndTripController : ControllerBase
     {
@@ -51,7 +51,7 @@ namespace DealAndTripServer.Controllers
                 return null;
             }
         }
-        [Route("Sign Up")]
-        [HttpGet]
+        //[Route("Sign Up")]
+        //[HttpGet]
     }
 }
