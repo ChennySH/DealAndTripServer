@@ -6,6 +6,7 @@ using System.Linq;
 using System.Threading.Tasks;
 //Add the below
 using DealAndTripServerBL.Models;
+using DealAndTripServer.DTO;
 using System.IO;
 
 namespace DealAndTripServer.Controllers
@@ -30,10 +31,12 @@ namespace DealAndTripServer.Controllers
             return "hello cheni";
         }
         [Route("Login")]
-        [HttpGet]
-        public User GetUser([FromQuery] string userName, [FromQuery] string password)
+        [HttpPost]
+        public User Login([FromBody] LoginDTO loginDTO)
         {
-            User u = context.GetUser(userName, password);
+            string userNameOrEmail = loginDTO.UserNameOrEmail;
+            string password = loginDTO.Password;
+            User u = context.GetUser(userNameOrEmail, password);
             //Check user name and password
             if (u != null)
             {
