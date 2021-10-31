@@ -12,7 +12,7 @@ namespace DealAndTripServerBL.Models
         public string LastName { get; set; }
         public string Email { get; set; }
         public string Password { get; set; }
-        public int PhoneNumber { get; set; }
+        public string PhoneNumber { get; set; }
         public int? TravelAgentId { get; set; }
 
         public virtual TravelAgent TravelAgentNavigation { get; set; }

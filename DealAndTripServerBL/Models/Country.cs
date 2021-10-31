@@ -14,7 +14,9 @@ namespace DealAndTripServerBL.Models
 
         public int Id { get; set; }
         public string Name { get; set; }
+        public int MainlandId { get; set; }
 
+        public virtual Mainland Mainland { get; set; }
         public virtual ICollection<City> Cities { get; set; }
     }
 }

@@ -14,13 +14,13 @@ namespace DealAndTripServerBL.Models
         {
             return this.Users.Where(uc => uc.Email == "kuku@kuku.com").FirstOrDefault().LastName;
         }
-        public User GetUser(string userName, string password)
+        public User GetUser(string userNameOrEmail, string password)
         {
-            User u = this.Users.Include(uc => uc.TravelAgent).Where(uc => uc.UserName == userName && uc.Password == password).FirstOrDefault();
+            User u = this.Users.Include(uc => uc.TravelAgent).Where(uc => uc.UserName == userNameOrEmail && uc.Password == password).FirstOrDefault();
             if (u != null)
                 return u;
             else
-                return this.Users.Include(uc => uc.TravelAgent).Where(uc => uc.Email == userName && uc.Password == password).FirstOrDefault();
+                return this.Users.Include(uc => uc.TravelAgent).Where(uc => uc.Email == userNameOrEmail && uc.Password == password).FirstOrDefault();
         }
     }
 }

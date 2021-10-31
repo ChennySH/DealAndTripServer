@@ -22,6 +22,7 @@ namespace DealAndTripServerBL.Models
         public virtual DbSet<Flight> Flights { get; set; }
         public virtual DbSet<Hotel> Hotels { get; set; }
         public virtual DbSet<HotelsVacaction> HotelsVacactions { get; set; }
+        public virtual DbSet<Mainland> Mainlands { get; set; }
         public virtual DbSet<Resturant> Resturants { get; set; }
         public virtual DbSet<TravelAgent> TravelAgents { get; set; }
         public virtual DbSet<TravelSite> TravelSites { get; set; }
@@ -70,9 +71,17 @@ namespace DealAndTripServerBL.Models
                     .ValueGeneratedNever()
                     .HasColumnName("id");
 
+                entity.Property(e => e.MainlandId).HasColumnName("MainlandID");
+
                 entity.Property(e => e.Name)
                     .IsRequired()
                     .HasMaxLength(255);
+
+                entity.HasOne(d => d.Mainland)
+                    .WithMany(p => p.Countries)
+                    .HasForeignKey(d => d.MainlandId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("countries_mainlandid_foreign");
             });
 
             modelBuilder.Entity<Flight>(entity =>
@@ -130,6 +139,18 @@ namespace DealAndTripServerBL.Models
                     .HasForeignKey(d => d.VacationId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("hotelsvacactions_vacationid_foreign");
+            });
+
+            modelBuilder.Entity<Mainland>(entity =>
+            {
+                entity.Property(e => e.Id)
+                    .ValueGeneratedNever()
+                    .HasColumnName("id");
+
+                entity.Property(e => e.Name)
+                    .IsRequired()
+                    .HasMaxLength(255)
+                    .HasColumnName("name");
             });
 
             modelBuilder.Entity<Resturant>(entity =>
@@ -207,6 +228,10 @@ namespace DealAndTripServerBL.Models
                     .HasMaxLength(255);
 
                 entity.Property(e => e.Password)
+                    .IsRequired()
+                    .HasMaxLength(255);
+
+                entity.Property(e => e.PhoneNumber)
                     .IsRequired()
                     .HasMaxLength(255);
 

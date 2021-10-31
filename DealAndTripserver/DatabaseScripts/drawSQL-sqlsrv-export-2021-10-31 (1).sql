@@ -1,10 +1,13 @@
+--Create Database DealAndTripDB
+go 
+use DealAndTripDB
 CREATE TABLE "Users"(
     "UserName" NVARCHAR(255) NOT NULL,
     "FirstName" NVARCHAR(255) NOT NULL,
     "LastName" NVARCHAR(255) NOT NULL,
     "Email" NVARCHAR(255) NOT NULL,
     "Password" NVARCHAR(255) NOT NULL,
-    "PhoneNumber" INT NOT NULL,
+    "PhoneNumber" NVARCHAR(255) NOT NULL,
     "TravelAgentID" INT NULL
 );
 ALTER TABLE
@@ -60,7 +63,8 @@ ALTER TABLE
     "TravelSites" ADD CONSTRAINT "travelsites_id_primary" PRIMARY KEY("id");
 CREATE TABLE "Countries"(
     "id" INT NOT NULL,
-    "Name" NVARCHAR(255) NOT NULL
+    "Name" NVARCHAR(255) NOT NULL,
+    "MainlandID" INT NOT NULL
 );
 ALTER TABLE
     "Countries" ADD CONSTRAINT "countries_id_primary" PRIMARY KEY("id");
@@ -121,6 +125,12 @@ CREATE TABLE "VacationsCities"(
 );
 ALTER TABLE
     "VacationsCities" ADD CONSTRAINT "vacationscities_id_primary" PRIMARY KEY("id");
+CREATE TABLE "Mainlands"(
+    "id" INT NOT NULL,
+    "name" NVARCHAR(255) NOT NULL
+);
+ALTER TABLE
+    "Mainlands" ADD CONSTRAINT "mainlands_id_primary" PRIMARY KEY("id");
 ALTER TABLE
     "TravelAgents" ADD CONSTRAINT "travelagents_username_foreign" FOREIGN KEY("UserName") REFERENCES "Users"("UserName");
 ALTER TABLE
@@ -149,3 +159,5 @@ ALTER TABLE
     "HotelsVacactions" ADD CONSTRAINT "hotelsvacactions_hotelid_foreign" FOREIGN KEY("HotelID") REFERENCES "Hotels"("id");
 ALTER TABLE
     "VacationsResturant" ADD CONSTRAINT "vacationsresturant_resturantid_foreign" FOREIGN KEY("ResturantID") REFERENCES "Resturant"("id");
+ALTER TABLE
+    "Countries" ADD CONSTRAINT "countries_mainlandid_foreign" FOREIGN KEY("MainlandID") REFERENCES "Mainlands"("id");
