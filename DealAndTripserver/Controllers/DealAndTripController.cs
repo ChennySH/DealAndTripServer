@@ -54,7 +54,18 @@ namespace DealAndTripServer.Controllers
                 return null;
             }
         }
-        //[Route("Sign Up")]
-        //[HttpGet]
+        [Route("SignUp")]
+        [HttpPost]
+        public bool SignUp([FromBody] User user)
+        {
+            bool isExist = this.context.IsExist(user.UserName, user.Email);
+            if (isExist)
+                return false;
+            else
+            {
+                this.context.Users.Add(user);
+                return true;
+            }
+        }
     }
 }

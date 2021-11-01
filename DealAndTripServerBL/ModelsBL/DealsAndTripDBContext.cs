@@ -22,5 +22,15 @@ namespace DealAndTripServerBL.Models
             else
                 return this.Users.Include(uc => uc.TravelAgent).Where(uc => uc.Email == userNameOrEmail && uc.Password == password).FirstOrDefault();
         }
+        public bool IsExist(string userName, string email)
+        {
+            bool isExist = false;
+            foreach(User u in this.Users)
+            {
+                if (u.UserName == userName || u.Email == email)
+                    isExist = true;
+            }
+            return isExist;
+        }
     }
 }
