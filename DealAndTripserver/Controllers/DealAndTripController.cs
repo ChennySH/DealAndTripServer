@@ -64,6 +64,7 @@ namespace DealAndTripServer.Controllers
             else
             {
                 this.context.Users.Add(user);
+                this.context.SaveChanges();
                 return true;
             }
         }
