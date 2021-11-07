@@ -59,7 +59,7 @@ namespace DealAndTripServer.Controllers
 
         public bool SignUp([FromBody] User user)
         {
-            bool isExist = this.context.IsExist(user.UserName, user.Email);
+            bool isExist = this.context.IsExist(user.UserName, user.Email); //jjj
             if (isExist)
                 return false;
             else
