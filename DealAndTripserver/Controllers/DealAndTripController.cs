@@ -56,6 +56,7 @@ namespace DealAndTripServer.Controllers
         }
         [Route("SignUp")]
         [HttpPost]
+
         public bool SignUp([FromBody] User user)
         {
             bool isExist = this.context.IsExist(user.UserName, user.Email);
