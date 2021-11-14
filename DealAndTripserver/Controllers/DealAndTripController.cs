@@ -69,5 +69,17 @@ namespace DealAndTripServer.Controllers
                 return true;
             }
         }
+        [Route("IsUserNameExist")]
+        [HttpPost]
+        public bool IsUserNameExist([FromBody] string userName)
+        {
+            return this.context.IsUserNameExist(userName);
+        }
+        [Route("IsEmailExist")]
+        [HttpPost]
+        public bool IsEmailExist([FromBody] string userName)
+        {
+            return this.context.IsEmailExist(userName);
+        }
     }
 }

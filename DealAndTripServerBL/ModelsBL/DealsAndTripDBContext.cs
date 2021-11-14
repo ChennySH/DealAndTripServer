@@ -28,5 +28,17 @@ namespace DealAndTripServerBL.Models
             bool isExist = (u != null);
             return isExist;
         }
+        public bool IsUserNameExist(string userName)
+        {
+            User u = this.Users.Where(uc => uc.UserName == userName).FirstOrDefault();
+            bool isExist = (u != null);
+            return isExist;
+        }
+        public bool IsEmailExist(string email)
+        {
+            User u = this.Users.Where(uc => uc.Email == email).FirstOrDefault();
+            bool isExist = (u != null);
+            return isExist;
+        }
     }
 }
