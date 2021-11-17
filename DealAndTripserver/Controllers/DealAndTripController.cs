@@ -9,7 +9,6 @@ using DealAndTripServerBL.Models;
 using DealAndTripServer.DTO;
 using System.IO;
 
-
 namespace DealAndTripServer.Controllers
 {
     [Route("DealAndTripAPI")]
