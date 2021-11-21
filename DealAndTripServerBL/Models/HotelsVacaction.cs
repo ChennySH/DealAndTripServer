@@ -5,6 +5,7 @@ using System.Collections.Generic;
 
 namespace DealAndTripServerBL.Models
 {
+
     public partial class HotelsVacaction
     {
         public int Id { get; set; }
