@@ -77,9 +77,9 @@ namespace DealAndTripServer.Controllers
         }
         [Route("IsEmailExist")]
         [HttpPost]
-        public bool IsEmailExist([FromBody] string userName)
+        public bool IsEmailExist([FromBody] string email)
         {
-            return this.context.IsEmailExist(userName);
+            return this.context.IsEmailExist(email);
         }
     }
 }
