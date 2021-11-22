@@ -82,5 +82,11 @@ namespace DealAndTripServer.Controllers
 
             return this.context.IsEmailExist(email);
         }
+        [Route("SetAsATravelAgent")]
+        [HttpPost]
+        public void SetAsATravelAgent([FromBody] string userName)
+        {
+            this.context.SetUserAsTravelAgent(userName);
+        }
     }
 }

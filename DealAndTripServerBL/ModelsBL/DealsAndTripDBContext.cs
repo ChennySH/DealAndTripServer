@@ -40,5 +40,10 @@ namespace DealAndTripServerBL.Models
             bool isExist = (u != null);
             return isExist;
         }
+        public void SetUserAsTravelAgent(string userName)
+        {
+            User u = this.Users.Include(uc => uc.TravelAgent).Where(uc => uc.UserName == userName).FirstOrDefault();
+
+        }
     }
 }
