@@ -79,7 +79,6 @@ namespace DealAndTripServer.Controllers
         [HttpPost]
         public bool IsEmailExist([FromBody] string email)
         {
-
             return this.context.IsEmailExist(email);
         }
         [Route("SetAsATravelAgent")]

@@ -43,7 +43,14 @@ namespace DealAndTripServerBL.Models
         public void SetUserAsTravelAgent(string userName)
         {
             User u = this.Users.Include(uc => uc.TravelAgent).Where(uc => uc.UserName == userName).FirstOrDefault();
-
+            TravelAgent newTravelAgent = new TravelAgent 
+            {
+                UserName = u.UserName,
+                Rank = 0 
+            };
+            this.TravelAgents.Add(newTravelAgent);
+            u.TravelAgent = newTravelAgent;
+            SaveChanges();
         }
     }
 }
